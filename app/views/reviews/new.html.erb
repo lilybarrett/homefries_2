@@ -1,0 +1,33 @@
+<div class="page-background"
+  <h1>Review the <%= @diner.name %>'s Home Fries!</h1>
+
+  <%= form_for [@diner, @review] do |f| %>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.label :body, "Review" %>
+        <%= f.text_field :body %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.submit "Submit", :class => 'button' %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <ul class="button-group even-3">
+        <%= link_to "Back to All", diners_path, :class => "button" %>
+      </ul>
+    </div>
+  </div>
+</div>

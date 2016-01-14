@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Beantown Starch</title>
+  <%= javascript_include_tag "application" %>
+</head>
+
+<body>
+  <div class="fixed">
+    <div class="nav-bar">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#">Beantown Starch: A Home Fries Review Site</a></h1>
+          </li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class="form-link">
+              <%= link_to "Add New Diner", new_diner_path %>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+
+    <ul>
+      <% @diners.each do |diner| %>
+        <div class="columns medium-3 offset-2">
+          <div class="diner">
+            View Home Fries Rating for <strong><%= link_to diner.name, diner_path(diner) %></strong>
+            <!-- <img src="http://media.nj.com/the_dish/photo/diner-home-friesjpg-5efdc3b03d38279d_large.jpg"> -->
+          </div>
+        </div>
+      <% end %>
+    </ul>
+
+</body>

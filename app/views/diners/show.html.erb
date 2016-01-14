@@ -1,0 +1,39 @@
+<div class="page-background">
+  <h1><%= @diner.name %></h1>
+
+  <p class="address"><i><%= @diner.address %></i></p>
+
+  <%if @diner.description.empty? %>
+    <div class="row">
+      <div class="medium-6 small-centered columns">
+        <div class="header panel">This description is empty. Tell us what you know!</div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="medium-6 small-centered columns">
+        <div class="header panel"><%= @diner.description %></div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="medium-6 large-centered columns">
+      <ul class="button-group even-3">
+        <%= link_to "How Are Their Home Fries?", new_diner_review_path(@diner), :class => "button" %>
+        <%= link_to "Back to All", diners_path, :class => "button" %>
+        <%= link_to "Edit Diner Info", edit_diner_path, :class => "button" %>
+        <%= link_to "Delete Entry", diner_path(@diner), :class => "button",
+          method: :delete,
+          data: {confirm: "Are you sure you want to delete this entry?" } %>
+      </ul>
+    </div>
+  </div>
+
+  <% @reviews.each do |review| %>
+      <div class="review">
+        <p><strong>Review date:</strong> <%= review.created_at.strftime("%B %d %Y") %></p>
+        <p><strong>Rating:</strong> <%= review.rating %></p>
+        <p><strong>Comments:</strong> <%= review.body %></p>
+        <p><%= link_to "Edit Review", edit_review_path(review), :class => "button" %></p>
+      </div>
+    <% end %>
+</div>

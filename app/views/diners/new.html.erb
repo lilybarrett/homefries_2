@@ -1,0 +1,40 @@
+<div class="page-background">
+  <h1>Add a Diner</h1>
+
+  <%= form_for(@diner) do |f| %>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= f.submit "Submit", :class => 'button'%>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <ul class="button-group even-3">
+        <%= link_to "Back to All", diners_path, :class => "button" %>
+      </ul>
+    </div>
+  </div>
+</div>
