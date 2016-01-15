@@ -33,6 +33,7 @@
   <% @reviews.each do |review| %>
       <div class="review">
         <p><strong>Review date:</strong> <%= review.created_at.strftime("%B %d %Y") %></p>
+        <p><strong>Reviewer:</strong> <%= review.user.first_name %></p>
         <p><strong>Rating:</strong> <%= review.rating %></p>
         <p><strong>Comments:</strong> <%= review.body %></p>
         <% if user_signed_in? && review.user == current_user %>
