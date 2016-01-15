@@ -7,8 +7,7 @@ class ReviewsController < ApplicationController
   def create
     @diner = Diner.find(params[:diner_id])
     @review = @diner.reviews.new(review_params)
-    # @review = Review.new(review_params)
-    # @review.diner = @diner
+    @review.user = current_user
 
     if @review.save
       flash[:notice] = "Opinion noted!"

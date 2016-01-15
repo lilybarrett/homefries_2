@@ -1,5 +1,3 @@
-
-
 class DinersController < ApplicationController
 
   def new
@@ -12,6 +10,7 @@ class DinersController < ApplicationController
 
   def create
     @diner = Diner.new(diner_params)
+    @diner.user = current_user
     if @diner.save
       flash[:notice] = "Diner added succesfully!"
       redirect_to diner_path(@diner)
@@ -44,7 +43,7 @@ class DinersController < ApplicationController
     @diner = Diner.find(params[:id])
     @diner.destroy
 
-    redirect_to diners_path 
+    redirect_to diners_path
   end
 
   private

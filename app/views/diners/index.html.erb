@@ -16,9 +16,23 @@
 
         <section class="top-bar-section">
           <ul class="right">
+            <% if user_signed_in? %>
             <li class="form-link">
               <%= link_to "Add New Diner", new_diner_path %>
             </li>
+          </ul>
+          <ul class="left">
+            <li class="form-link">
+              <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+            </li>
+            <% else %>
+            <li class="form-link">
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </li>
+            <li class="form-link">
+              <%= link_to "Sign In", new_user_session_path %>
+            </li>
+            <% end %>
           </ul>
         </section>
       </nav>

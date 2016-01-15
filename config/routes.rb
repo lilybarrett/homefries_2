@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'diners#index'
   resources :diners, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :reviews, only: [:new, :create]
   end
 
   resources :reviews, only: [:edit, :update]
+
+  # devise_for :users, controllers: {
+  #   registrations: "registrations",
+  #   sessions: "sessions"
+  # }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

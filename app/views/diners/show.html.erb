@@ -20,10 +20,12 @@
       <ul class="button-group even-3">
         <%= link_to "How Are Their Home Fries?", new_diner_review_path(@diner), :class => "button" %>
         <%= link_to "Back to All", diners_path, :class => "button" %>
+        <% if user_signed_in? && @diner.user == current_user %>
         <%= link_to "Edit Diner Info", edit_diner_path, :class => "button" %>
         <%= link_to "Delete Entry", diner_path(@diner), :class => "button",
           method: :delete,
           data: {confirm: "Are you sure you want to delete this entry?" } %>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -33,7 +35,9 @@
         <p><strong>Review date:</strong> <%= review.created_at.strftime("%B %d %Y") %></p>
         <p><strong>Rating:</strong> <%= review.rating %></p>
         <p><strong>Comments:</strong> <%= review.body %></p>
+        <% if user_signed_in? && review.user == current_user %>
         <p><%= link_to "Edit Review", edit_review_path(review), :class => "button" %></p>
+        <% end %>
       </div>
     <% end %>
 </div>
