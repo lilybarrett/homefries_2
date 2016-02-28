@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'diners#index'
   resources :diners, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 
   resources :reviews, only: [:edit, :update]

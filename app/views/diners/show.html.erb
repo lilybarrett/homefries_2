@@ -38,6 +38,7 @@
         <p><strong>Comments:</strong> <%= review.body %></p>
         <% if user_signed_in? && review.user == current_user %>
         <p><%= link_to "Edit Review", edit_review_path(review), :class => "button" %></p>
+        <p><%= link_to "Delete Review", diner_review_path(@diner, @review), method: :delete, :class => "button" %></p>
         <% end %>
       </div>
     <% end %>

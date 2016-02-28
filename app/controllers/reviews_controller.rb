@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user, except [:index, :show]
+  
   def new
     @diner = Diner.find(params[:diner_id])
     @review = Review.new
@@ -30,6 +32,13 @@ class ReviewsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @diner = Diner.find(params[:diner_id])
+    Review.find(params[:id]).destroy
+
+    redirect_to diner_path(@diner)
   end
 
   private
